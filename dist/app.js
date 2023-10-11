@@ -8,12 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// declarations
 const url = "https://open-ai21.p.rapidapi.com/conversationgpt35/";
 const askButton = document.querySelector("#btnAsk");
 const inputEl = document.querySelector("#inputEl");
 const responseHolder = document.querySelector(".response");
-//functions
+// function to simulate typing effect
+function typeEffect(text) {
+    return __awaiter(this, void 0, void 0, function* () {
+        responseHolder.textContent = "";
+        for (let i = 0; i < text.length; i++) {
+            responseHolder.textContent += text.charAt(i);
+            yield new Promise((resolve) => setTimeout(resolve, 50)); // adjust the time delay here (50ms)
+        }
+    });
+}
+// functions
 function generateResponse(msg) {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {
@@ -36,13 +45,15 @@ function generateResponse(msg) {
         };
         try {
             const response = yield fetch(url, options);
-            if (response) {
+            if (response.status == 200) {
                 responseHolder.textContent = "Generating...";
-                console.log(response);
                 const text = yield response.text();
                 const parsed = JSON.parse(text);
                 const res = parsed.BOT;
-                responseHolder.textContent = res;
+                yield typeEffect(res); // apply typed animation effect to the response
+            }
+            else {
+                responseHolder.textContent = "";
             }
         }
         catch (error) {
@@ -50,7 +61,7 @@ function generateResponse(msg) {
         }
     });
 }
-// events
+// event
 askButton.addEventListener("click", () => {
     generateResponse(inputEl.value);
 });

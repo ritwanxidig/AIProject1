@@ -13,36 +13,40 @@
         My Chatgpt
       </h1>
       <div class="bg-white shadow-md rounded flex flex-col p-5">
+        
+        <!-- Answer -->
+
+        <div class="mt-4">
+          <p
+            style="
+              display: block;
+              white-space: pre-wrap;
+              background-color: #f7f7f7;
+              padding: 10px;
+              margin-top: 10px;
+              border-radius: 5px;
+            "
+            class="text-slate-500 response"
+          ></p>
+        </div>
+
         <!-- Question  -->
         <div class="questionContainer mt-4">
-          <input
+          <textarea
             type="text"
+            draggable="false"
             placeholder="Ask anything..."
             id="inputEl"
-            class="py-2 px-4 outline-none border-2 w-full rounded border-gray-400 focus:border-blue-500"
-          />
+            rows="12"
+            cols="4"
+            class="py-2 max-h-16 px-4 outline-none border-2 w-full rounded border-gray-400 focus:border-blue-500"
+          ></textarea>
           <button
             class="float-right px-5 text-xl font-semibold rounded text-white py-2 m-2 bg-blue-500 hover:bg-blue-600 transition outline-none"
             id="btnAsk"
           >
             Ask
           </button>
-        </div>
-
-        <!-- Answer -->
-
-        <div class="mt-4">
-          <p class="text-slate-500 response">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere non
-            soluta velit, dolores excepturi, obcaecati similique perferendis
-            alias laudantium ab voluptatem dicta provident id doloremque labore.
-            Corrupti magni nihil ipsum similique eligendi. Aspernatur eos sit
-            error quis dolorem ipsa quo laudantium soluta. Voluptates deleniti
-            quae suscipit minima eum. Cumque, quos. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Rerum asperiores impedit fugit sunt
-            sint vero, enim obcaecati quidem officia iste numquam ut quos
-            deserunt modi odio? Ut necessitatibus reiciendis repellendus.
-          </p>
         </div>
       </div>
     </div>
